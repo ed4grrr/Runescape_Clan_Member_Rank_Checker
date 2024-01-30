@@ -9,7 +9,8 @@ class runescape_API_Access():
 
     def __init__(self):
         super()
-        self.clan_data = {}
+        self.clan_data_dict = {}
+        self.clan_data_list = []
 
     def get_player(self, username):
         clean_username = username.replace(" ", "_")
@@ -47,18 +48,19 @@ class runescape_API_Access():
 
 
     def parse_clan_data(self,clan_data):
-        self.clan_data.clear()
+        self.clan_data_dict.clear()
+        self.clan_data_list.clear()
         clan_data_split = clan_data.split("\n")
+        self.clan_data_list=clan_data_split
         for clanmate in clan_data_split:
             clanmate_details = clanmate.split(",")
-            print(clanmate_details)
             if clanmate_details == ['']:
                 continue
-            self.clan_data[clanmate_details[0]] = [clanmate_details[1],clanmate_details[2],clanmate_details[3]]
+            self.clan_data_dict[clanmate_details[0]] = [clanmate_details[1],clanmate_details[2],clanmate_details[3]]
+        del self.clan_data_dict["Clanmate"]
 
-            print(clanmate_details)
-
-        print(self.clan_data)
+        print(self.clan_data_list)
+        print(self.clan_data_dict)
 if __name__ == "__main__":
     api_test = runescape_API_Access()
 
