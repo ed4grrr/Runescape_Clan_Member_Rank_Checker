@@ -1,7 +1,7 @@
 import urllib.error
 import urllib.request
 import requests
-
+import Clan_Requirement_Checker
 import UsefulLists
 
 
@@ -64,8 +64,14 @@ class runescape_API_Access():
 if __name__ == "__main__":
     api_test = runescape_API_Access()
 
-    #response = api_test.get_player("Deathmunglar")
+
 
     response = api_test.get_clan_information("The Citadel Kingdom").replace(u'\xa0', u' ')
 
     api_test.parse_clan_data(response)
+
+    Clan_Req_check = Clan_Requirement_Checker.clan_Requirement_Checker()
+
+
+
+    print(Clan_Req_check.check_for_rank_up(api_test.clan_data_dict))

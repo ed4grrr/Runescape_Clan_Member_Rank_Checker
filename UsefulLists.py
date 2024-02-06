@@ -1537,10 +1537,15 @@ class Highscore_List_Names(Enum):
 
 TCK_Default_Experience = OrderedDict(
     {
-        "Recruit":0,
-        "Corporal":20000000,
-        "Sergeant":50000000,
-        "Lieutenant":100000000,
-        "Captain":250000000,
-        "General":500000000
+        "Recruit":20000000,
+        "Corporal":50000000,
+        "Sergeant":100000000,
+        "Lieutenant":250000000,
+        "Captain":500000000,
     })
+
+TCK_Default_Skip_List = ["Owner","Deputy Owner", "Overseer","Coordinator","Organiser","Admin","General"]
+
+Promotion_Dict = {"Recruit":"Corporal","Corporal":"Sergeant","Sergeant":'Lieutenant',"Lieutenant":"Captain",
+                  "Captain":"General","General":"Admin", "Admin":"Organiser", "Organiser":"Coordinator"
+                  , "Coordinator":"Overseer", "Overseer":"Deputy Owner", "Deputy Owner":"Owner"}
