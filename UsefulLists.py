@@ -1534,7 +1534,8 @@ class Highscore_List_Names(Enum):
     LEVEL = 1
     EXPERIENCE = 2
 
-
+# to add or remove ranks to be checked for promos, either add/remove the appropriate rank and its xp threshold
+# to TCK_Default_Experience AND add/remove the rank from TCK_Default_Skip_List.
 TCK_Default_Experience = OrderedDict(
     {
         "Recruit":20000000,
@@ -1542,9 +1543,10 @@ TCK_Default_Experience = OrderedDict(
         "Sergeant":100000000,
         "Lieutenant":250000000,
         "Captain":500000000,
+        "General" :1000000000,
     })
 
-TCK_Default_Skip_List = ["Owner","Deputy Owner", "Overseer","Coordinator","Organiser","Admin","General"]
+TCK_Default_Skip_List = ["Owner","Deputy Owner", "Overseer","Coordinator","Organiser","Admin"]
 
 Promotion_Dict = {"Recruit":"Corporal","Corporal":"Sergeant","Sergeant":'Lieutenant',"Lieutenant":"Captain",
                   "Captain":"General","General":"Admin", "Admin":"Organiser", "Organiser":"Coordinator"

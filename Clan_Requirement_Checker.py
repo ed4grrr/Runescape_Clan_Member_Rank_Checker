@@ -1,3 +1,5 @@
+import datetime
+
 import UsefulLists
 
 class clan_Requirement_Checker:
@@ -21,7 +23,8 @@ class clan_Requirement_Checker:
 
 
     def check_for_rank_up(self,clan_list):
-        clanmates_requiring_promotions = "**********Clan Promotions**********\n"
+        today=datetime.date.today()
+        clanmates_requiring_promotions = f"**********Clan Promotions {today}**********\n"
 
         for clanmate in clan_list.items():
             if clanmate[1][0] not in self.skip_list:
