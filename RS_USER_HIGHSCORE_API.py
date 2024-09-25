@@ -3,6 +3,8 @@ import urllib.request
 import requests
 import Clan_Requirement_Checker
 import UsefulLists
+import discord
+from discord.ext import commands
 
 
 class runescape_API_Access():
@@ -59,22 +61,32 @@ class runescape_API_Access():
             self.clan_data_dict[clanmate_details[0]] = [clanmate_details[1],clanmate_details[2],clanmate_details[3]]
         del self.clan_data_dict["Clanmate"]
 
-        print(self.clan_data_list)
-        print(self.clan_data_dict)
+        #print(self.clan_data_list)
+        #print(self.clan_data_dict)
 if __name__ == "__main__":
     api_test = runescape_API_Access()
 
 
 
-    response = api_test.get_clan_information("The Citadel Kingdom").replace(u'\xa0', u' ')
-
-    api_test.parse_clan_data(response)
-
-    Clan_Req_check = Clan_Requirement_Checker.clan_Requirement_Checker()
 
 
 
-    print(Clan_Req_check.check_for_rank_up(api_test.clan_data_dict))
 
-    print("Press Enter to Exit")
-    input()
+
+    bot = commands.Bot(command_prefix='!')
+
+
+    @bot.command()
+    async def rank(ctx):
+        # Your existing code goes here
+        # For example:
+
+        response = api_test.get_clan_information("The Citadel Kingdom").replace(u'\xa0', u' ')
+
+        api_test.parse_clan_data(response)
+
+        Clan_Req_check = Clan_Requirement_Checker.clan_Requirement_Checker()
+
+        # Send the result back to Discord
+        await ctx.send(f"Clan_Req_check.check_for_rank_up(api_test.clan_data_dict)")
+
