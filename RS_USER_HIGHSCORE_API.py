@@ -75,3 +75,6 @@ if __name__ == "__main__":
 
 
     print(Clan_Req_check.check_for_rank_up(api_test.clan_data_dict))
+
+    print("Press Enter to Exit")
+    input()
